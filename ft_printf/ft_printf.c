@@ -69,7 +69,7 @@ int	main(void)
 	ft_printf("POINTER NULO: %p \n", NULL );
 	ft_printf("POINTER DE x é: %p\n", (void *)ptr);
 	ft_printf ("DECIMAL e HEXADECIMAL: %d %x %X \n", 255, 255, 255);
-	ft_printf ("Unsigned int: %u \n", UINT_MAX);
+	ft_printf ("Unsigned int: %u %u\n",  2147483647, UINT_MAX);
 	ft_printf ("Unsigned int: %u \n", 4294967296);
 	
    	ft_printf("\n");
@@ -83,7 +83,7 @@ int	main(void)
 	printf("Pointer de x é: %p\n", (void *)ptr);
 	printf ("Decimal e hexadecimal: %d %x %X \n", 255, 255, 255);
 	printf ("Unsigned int: %u \n", UINT_MAX);
-	ft_printf ("Unsigned int: %u \n", 4294967296 );
+	ft_printf ("Unsigned int: %u \n", 4294967296);
 	return (0);
 }
 /*
