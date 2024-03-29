@@ -51,8 +51,7 @@ int	ft_conversion(va_list args, const char format)
 
     return(0);
 }
-
-int	main(void)
+/*int	main(void)
 {
 	int teste = printf("hello world\n");
 	printf("imprimiu: %d\n", teste);
@@ -60,14 +59,14 @@ int	main(void)
 	ft_printf("imprimiu: %d\n", teste2);
 	printf("\n");
 	int x = 42;
-	int *ptr = &x; 
+	void *ptr = &x; 
 	ft_printf("HELLO\n");
     ft_printf("CHARACTERS: %c %c\n", 'a', 'b');
     ft_printf("STRINGS: %s %s\n", "Good", "bye");
     ft_printf("DECIMAL: %i %d\n", 42, 123);
 	ft_printf ("DECIMALS: %d %d\n", 1977, 650000L);
 	ft_printf("POINTER NULO: %p \n", NULL );
-	ft_printf("POINTER DE x é: %p\n", (void *)ptr);
+	ft_printf("POINTER DE x é: %p\n", ptr);
 	ft_printf ("DECIMAL e HEXADECIMAL: %d %x %X \n", 255, 255, 255);
 	ft_printf ("Unsigned int: %u %u\n",  2147483647, UINT_MAX);
 	ft_printf ("Unsigned int: %u \n", 4294967296);
@@ -80,12 +79,12 @@ int	main(void)
 	printf("Decimal: %d %d\n", 42, 123);
 	printf ("Decimals: %d %ld\n", 1977, 650000L);
 	printf("Pointer nulo: %p \n", NULL );
-	printf("Pointer de x é: %p\n", (void *)ptr);
+	printf("Pointer de x é: %p\n", ptr);
 	printf ("Decimal e hexadecimal: %d %x %X \n", 255, 255, 255);
 	printf ("Unsigned int: %u \n", UINT_MAX);
 	ft_printf ("Unsigned int: %u \n", 4294967296);
 	return (0);
-}
+}*/
 /*
 printf ("Preceding with blanks: %10d \n", 1977);
 	printf ("Preceding with zeros: %010d \n", 1977);
