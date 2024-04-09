@@ -1,6 +1,7 @@
 # ft_printf
 
-<img src = "https://www.i-tecnico.pt/wp-content/uploads/2020/09/42-Lisboa.png" alt = "Img 42 Lisbon" >
+ <img src = "https://www.vangproperties.com/media/3830/42lisboa.jpg?preset=imageWithTextInsideText" alt = "42 lisbon img">
+
 
 ## About
 The aim of the project is to create my own printf function considering the behavior of the original function.
