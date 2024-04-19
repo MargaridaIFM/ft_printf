@@ -1,12 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfrancis <mfrancis@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/09 13:55:14 by mfrancis          #+#    #+#             */
+/*   Updated: 2024/04/18 17:15:51 by mfrancis         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-// Vai serparar as palavras
-static void	ft_split_words(char **array, char const *s, char c)
+//to free the allocated memory if anything goes wrong
+static void	ft_freedup(char **array)
+{
+	int	idx;
+
+	idx = 0;
+	while (array[idx])
+	{
+		free(array[idx]);
+		idx++;
+	}
+	free(array);
+}
+
+// to separete the words
+static char	**ft_split_words(char **array, char const *s, char c)
 {
 	char	**word;
 	size_t	word_len;
 	size_t	i;
-    
+
 	i = 0;
 	word_len = 0;
 	word = array;
@@ -18,6 +44,8 @@ static void	ft_split_words(char **array, char const *s, char c)
 			if (s[i + 1] == '\0' || s[i + 1] == c)
 			{
 				*word = ft_substr(s, i - word_len + 1, word_len);
+				if (!(*word))
+					return (ft_freedup(array), NULL);
 				word++;
 				word_len = 0;
 			}
@@ -25,8 +53,10 @@ static void	ft_split_words(char **array, char const *s, char c)
 		i++;
 	}
 	*word = NULL;
+	return (array);
 }
-// conta o numero de strings da string delimitadas pelo seperador
+// To count how many words
+
 static int	ft_count_words(char const *s, char sep)
 {
 	int	counter;
@@ -34,7 +64,7 @@ static int	ft_count_words(char const *s, char sep)
 
 	counter = 0;
 	idx = 0;
-	if (s[idx] != sep)
+	if (s[idx] != sep && s[idx] != '\0')
 		counter++;
 	while (s[idx])
 	{
@@ -51,6 +81,7 @@ static int	ft_count_words(char const *s, char sep)
 	}
 	return (counter);
 }
+
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
@@ -59,9 +90,23 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	size = ft_count_words(s, c);
-	array = (char **) malloc((size + 1) * sizeof(char *));
+	array = malloc((size + 1) * sizeof(char *));
 	if (!array)
 		return (NULL);
-	ft_split_words(array, s, c);
+	array = ft_split_words(array, s, c);
 	return (array);
 }
+/* int main()
+{
+	char const*str_split = "";
+	char sep_split = ' ';
+	char **result_split =   ft_split(str_split, sep_split);
+	
+	for(int i = 0; result_split[i]; i++)
+		printf("Print: %s\n", result_split[i]);
+	for(int j = 0; result_split[j]; j++)
+	{
+		free(result_split[j]);
+	}
+	free(result_split);
+} */

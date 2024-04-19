@@ -5,13 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfrancis <mfrancis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 10:30:03 by mfrancis          #+#    #+#             */
-/*   Updated: 2024/03/06 10:27:18 by mfrancis         ###   ########.fr       */
+/*   Created: 2024/04/09 13:52:37 by mfrancis          #+#    #+#             */
+/*   Updated: 2024/04/14 19:38:49 by mfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/* Clears the string of spaces and one positive or negative sign
+Returns an integer. */
 int	ft_atoi(const char *nptr)
 {
 	int	i;
@@ -36,5 +38,13 @@ int	ft_atoi(const char *nptr)
 	}
 	return (final_nr * neg);
 }
-// Limpa a string de espaços e um sinal positivo ou negativo
-// Retorna um inteiro.
+
+/* int main()
+{
+	char nr_atoi[] = "	-1548689 hs";
+	char nr_atoi1[] = " +1548hs56";
+	printf("meu: %d\n", ft_atoi(nr_atoi));
+	printf("original: %d\n\n", atoi(nr_atoi));
+	printf("meu: %d\n", ft_atoi(nr_atoi1));
+	printf("original: %d\n\n", atoi(nr_atoi1));
+} */

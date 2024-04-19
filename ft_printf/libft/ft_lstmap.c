@@ -1,20 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfrancis <mfrancis@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/09 13:54:23 by mfrancis          #+#    #+#             */
+/*   Updated: 2024/04/17 15:18:38 by mfrancis         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
+/* Iterates the list ‘lst’ and applies the function to the content of all nodes.
+Them creates a new list with the modifications and removes the previous nodes.
+Return the new list ou NULL if allocation fails.
+ */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *new_list;
-	t_list *node;
-
+	t_list	*new_list;
+	t_list	*node;
 
 	if (!f || !lst)
 		return (NULL);
-    new_list = NULL;
+	new_list = NULL;
 	while (lst)
 	{
 		node = ft_lstnew(f(lst->content));
 		if (!node)
 		{
-			ft_lstclear(&node, (*del));
+			ft_lstclear(&new_list, (*del));
 			return (NULL);
 		}
 		ft_lstadd_back(&new_list, node);
@@ -22,22 +37,43 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (new_list);
 }
-/*int main()
+/* void *iterate(void *content)
 {
-    t_list *head  = malloc(sizeof(t_list));
+    int *num = (int *)content;
+    return (num);
+}
+void del_int(void *content)
+{
+    free(content);
+} */
 
-    t_list *node1 = malloc(sizeof(t_list));
-    t_list *node2 = malloc(sizeof(t_list));
-    t_list *node3 = malloc(sizeof(t_list));
+/* 
+int main()
+{
+    int content1 = 10;
+    int content2 = 20;
+    int content3 = 30;
 
-    node1->content = "Node 1";
-    node2->content = "Node 2";
-    node3->content = "Node 3";
+    t_list *elem1 = ft_lstnew(&content1);
+    t_list *elem2 = ft_lstnew(&content2);
+    t_list *elem3 = ft_lstnew(&content3);
 
-    head->next = node3;
-    node3->next = node2;
-    node2->next = node1;
-    node1->next = NULL;
+    elem1->next = elem2;
+    elem2->next = elem3;
+    elem3->next = NULL;
 
-    printf("before free: %s\n", (char *)node2->content);
-}*/
+    t_list *mapped_list = ft_lstmap(elem1, &iterate, &del_int);
+
+    while (mapped_list != NULL)
+    {
+        printf("%d\n", *(int *)(mapped_list->content));
+        mapped_list = mapped_list->next;
+    }
+    
+    ft_lstclear(&elem1, &del_int);
+    ft_lstclear(&mapped_list, &del_int);
+	free(elem1);
+	free(elem2);
+	free(elem3);
+    return 0;
+}  */

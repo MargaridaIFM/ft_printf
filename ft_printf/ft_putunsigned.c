@@ -1,8 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfrancis <mfrancis@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/09 17:43:07 by mfrancis          #+#    #+#             */
+/*   Updated: 2024/04/19 12:32:00 by mfrancis         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./ft_printf.h"
 
-char	*ft_utoa(unsigned int nrb);
+char	*ft_utoi(unsigned int nrb);
 int		ft_unsigned_len(unsigned int nrb);
 
+/* If the number is 0, print "0" and return 1
+If it not convert the integer to a string with utoa function. 
+Then print that string and at the end free the memory allocated.
+Return the length of the strinh  */
 int	ft_putunsigned(unsigned int nrb)
 {
 	int		len;
@@ -13,13 +29,17 @@ int	ft_putunsigned(unsigned int nrb)
 		len += ft_putchar('0');
 	else
 	{
-		str = ft_utoa(nrb);
+		str = ft_utoi(nrb);
 		len += ft_putstr(str);
 		free(str);
 	}
 	return (len);
 }
-char	*ft_utoa(unsigned int nrb)
+
+/* Converts a integer into a string and allocate the necessary memory 
+with the extra space for the null character.
+Returns the string. */
+char	*ft_utoi(unsigned int nrb)
 {
 	char	*str_nbr;
 	int		len;
@@ -34,13 +54,15 @@ char	*ft_utoa(unsigned int nrb)
 		str_nbr[len - 1] = nrb % 10 + '0';
 		nrb /= 10;
 		len--;
-	}	
+	}
 	return (str_nbr);
 }
 
+/* Divide the number by 16 until the rest is 0 to know how many digits are.
+Return the number of digits. */
 int	ft_unsigned_len(unsigned int nrb)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (nrb != 0)

@@ -1,8 +1,7 @@
 NAME = libftprintf.a
-CC = gcc
+CC = cc
 FLAGS = -Wall -Werror -Wextra
-LIBC = ar rc
-LIBR = ranlib
+LIBC = ar rcs
 LIBFT = $(LIBFTDIR)/libft.a
 LIBFTDIR =./libft
 RM = rm -f
@@ -17,18 +16,18 @@ SRCS = ft_printf.c \
 	
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME) $(LIBFT)
+all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS) 
 	$(CP) $(LIBFT) $(NAME)
 	$(LIBC)	$(NAME) $(OBJS)
-	$(LIBR) $(NAME)
 
 $(LIBFT): $(LIBFTDIR)
 	@$(MAKE) -C $(LIBFTDIR)
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
+	
 clean:
 	@$(MAKE) clean -C $(LIBFTDIR)
 	$(RM) $(OBJS)
